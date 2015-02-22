@@ -49,3 +49,5 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'simple_form'
 
 gem 'devise'
+
+gem 'gravatarify', '~> 3.0.0'
