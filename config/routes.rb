@@ -6,7 +6,7 @@ Stukbook::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#home'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
