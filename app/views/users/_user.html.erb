@@ -5,7 +5,9 @@
 <% end %>
 <div class="caption">
 <h3><%= user.username %></h3>
+<% if current_user %>
 <p><%= action_buttons(user)%></p>
+<% end %>
 </div>
 </div>
 </div>
