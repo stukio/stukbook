@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301145118) do
+ActiveRecord::Schema.define(version: 20150301151657) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20150301145118) do
     t.integer  "friend_id"
     t.string   "state",       default: "pending"
     t.datetime "friended_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.text     "content_html"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

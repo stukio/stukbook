@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
+  has_many :posts, dependent: :destroy
 
 
   def request_friendship(user_2)
