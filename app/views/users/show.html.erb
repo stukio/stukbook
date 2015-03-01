@@ -1,24 +1,60 @@
 <div class="jumbotron">
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-4">
+				<%= gravatar_tag @user.email, size: 200 %>
+			</div>
+
+			<div class="col-md-4">
+				<h3><%= @user.username %></h3>
+				<p>Age: <%= @user.age %></p>
+				<p>Gender: <%= @user.gender %></p>
+			</div>
+
+			<div class="col-md-4">
+				<h3>Who am I</h3>
+				<small><%= @user.bio %></small>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
 <div class="container">
+	<div class="row">
+	<!-- Friend Zone -->
+	<div class="col-md-3">
+	<div class="panel panel-default">
+	<div class="panel-heading">Friends (<%= @user.active_friends.size %>)
+	</div>
+	<div class="panel-body">
 
-<div class="row">
+	<% @user.active_friends.last(16).each do |user| %>
+	<%= link_to user_path(user.username) do %>
+		<%= gravatar_tag user.email, size: 40 %>
+	<% end %>
+	<% end %>
 
-<div class="col-md-4">
-<%= gravatar_tag @user.email, size: 200 %>
-</div>
+	</div>
 
-<div class="col-md-4">
-<h3><%= @user.username %></h3>
-<p>Age: <%= @user.age %></p>
-<p>Gender: <%= @user.gender %></p>
-</div>
+	</div>
+	</div>
+	<!-- Post Zone -->
+	<div class="col-md-6">
+	</div>
+	<!-- Profile Activity -->
+	<div class="col-md-3">
+		<div class="panel panel-default">
+		<div class="panel-heading">Recent Activity</div>
+		<div class="panel-body">
+			<%= render_activities(@activities) %>
+		</div>
+		</div>
+	</div>
 
-<div class="col-md-4">
-<h3>Who am I</h3>
-<small><%= @user.bio %></small>
-</div>
-
-</div>
-
-</div>
+	</div>
 </div>
