@@ -20,7 +20,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Timeline</a></li>
+        <li><%= link_to "Timeline", activities_path %></li>
         <li><%= link_to "People", users_path %></li>
         <% if current_user %>
         <li class="dropdown">
