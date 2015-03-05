@@ -1,33 +1,60 @@
 <div class="container">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <div class="row">
+<h2>User Settings</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
+
+<div class="col-md-5">
+  
   <%= f.error_notification %>
+  <div class="form-group">
+  <%= f.input :username, required: true, autofocus: true, input_html: {class: "form-control"} %>
+    <%= f.input :email, required: true, input_html: {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.input :age, input_html: {class: "form-control"} %>
+    <%= f.input :gender, collection: ["Male","Female"], input_html: {class: "form-control"} %>
+    <%= f.input :bio, input_html: {class: "form-control"} %>
+  </div>
 
-  <div class="form-inputs">
-  <%= f.input :username, required: true, autofocus: true %>
-  <%= f.input :age %>
-  <%= f.input :gender %>
-  <%= f.input :bio %>
-    <%= f.input :email, required: true %>
+<%= link_to "http://www.gravatar.com", target: "_blank" do %>
+<%= gravatar_tag current_user.email, size: 100 %>
+<% end %>
+<small>Click image to change</small>
 
+</div>
+
+
+<div class="col-md-2">
+</div>
+<div class="col-md-5">
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <div class="form-group">
+    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: {class: "form-control"} %>
+    <%= f.input :password_confirmation, required: false, input_html: {class: "form-control"} %>
+    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: {class: "form-control"} %>
+    </div>
+
+  
+
+  <div class="form-group">
+    <%= f.button :submit, "Update", class: "btn btn-primary btn-block" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
+  <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+</div>
+
+<% end %>
+
+
+
+</div>
 </div>
